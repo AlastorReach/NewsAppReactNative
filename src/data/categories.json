@@ -1,0 +1,37 @@
+[
+    {
+    "id": 33,
+    "count": 24,
+    "name": "Ciencia",
+    "cat_news_low_consume": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/active_categories\/v1\/categories\/33",
+    "cat_news": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/wp\/v2\/categories\/33"
+    },
+    {
+    "id": 50,
+    "count": 12,
+    "name": "Deportes",
+    "cat_news_low_consume": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/active_categories\/v1\/categories\/50",
+    "cat_news": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/wp\/v2\/categories\/50"
+    },
+    {
+    "id": 4,
+    "count": 42,
+    "name": "Empresas y econom\u00eda",
+    "cat_news_low_consume": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/active_categories\/v1\/categories\/4",
+    "cat_news": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/wp\/v2\/categories\/4"
+    },
+    {
+    "id": 3,
+    "count": 1,
+    "name": "Entrevistas",
+    "cat_news_low_consume": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/active_categories\/v1\/categories\/3",
+    "cat_news": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/wp\/v2\/categories\/3"
+    },
+    {
+    "id": 5,
+    "count": 8,
+    "name": "M\u00f3viles",
+    "cat_news_low_consume": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/active_categories\/v1\/categories\/5",
+    "cat_news": "https:\/\/josuemoragonzalez.dx.am\/wp-json\/wp\/v2\/categories\/5"
+    }
+    ]
