@@ -1,4 +1,4 @@
-# TVSurCanal14ReactNative #ReactNative #ReactNativeWithWordpressAPI
+# NewsAppReactNative #ReactNative #ReactNativeWithWordpressAPI
 <h1>News App developed with React Native</h1>
 
 <p>This mobile app uses WordPress Rest API, the Wordpress Website uses my public repository that it is a Wordpress plugin that extends
