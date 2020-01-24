@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { baseWebsiteurAPI } from '../Utils/constants'
+import  constants  from '../Utils/constants'
 
 const axiosService = axios.create({
-  baseURL: baseWebsiteurAPI,
+  baseURL: constants.baseWebsiteurlAPI,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
