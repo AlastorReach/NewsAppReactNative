@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { baseWebsiteurAPI } from '../Utils/constants'
 
 const axiosService = axios.create({
-  baseURL: 'https://josuemoragonzalez.dx.am/wp-json/',
+  baseURL: baseWebsiteurAPI,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'

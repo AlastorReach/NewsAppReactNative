@@ -3,6 +3,7 @@ import { StyleSheet, View, Dimensions, ActivityIndicator, StatusBar } from 'reac
 import Video from 'react-native-video';
 import Icon from "react-native-vector-icons/Ionicons";
 import Utils from '../Utils/Utils';
+import { liveTVUrl } from '../Utils/constants';
 
 var {width, height} = Dimensions.get('window');
 var isFullScreenGlobal = false;
@@ -84,7 +85,7 @@ export default class WatchScreen extends React.Component {
     {!this.state.hasLoaded && <ActivityIndicator size={50}/>}
     {this.state.isBuffering && <ActivityIndicator size={50}/>}
   </View>
-        <Video source={{ uri: "http://livestreamcdn.net:1935/TVSURCANAL14/TVSURCANAL14/playlist.m3u8" }}   // Can be a URL or a local file.
+        <Video source={{ uri:  liveTVUrl}}   // Can be a URL or a local file.
           ref={(ref) => {
             this.player = ref
           }}
