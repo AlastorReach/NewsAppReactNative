@@ -1,23 +1,94 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions, ActivityIndicator, StatusBar } from 'react-native';
 import Video from 'react-native-video';
 import Icon from "react-native-vector-icons/Ionicons";
+import Utils from '../Utils/Utils';
 
-
+var {width, height} = Dimensions.get('window');
+var isFullScreenGlobal = false;
 export default class WatchScreen extends React.Component {
-  static navigationOptions = {
+  constructor(props){
+    super(props);
+    this.state = {
+      hasLoaded: false,
+      isBuffering: false,
+      orientationWidth: Dimensions.get('window').width,
+      orientationHeight: Dimensions.get('window').width / 1.7777,
+      isFullScreen: false
+    }
+
+    this.onLayout = this.onLayout.bind(this);
+  }
+
+  componentDidMount(){
+    StatusBar.setHidden(true);
+  }
+  componentWillUnmount() {
+    StatusBar.setHidden(false);
+}
+  static navigationOptions = ({navigation}) => {
+    return{
     title: 'Welcome',
+    headerShown: !navigation.state.params.fullscreen
+    }
   };
+  onBuffer(){
+    this.setState({
+      isBuffering: true
+    })
+  }
+  onPlaybackRateChange(){
+    
+  }
+  resizeVideoPlayer() {
+    // Always in 16 /9 aspect ratio
+    width = Dimensions.get('window').width;
+    height = Dimensions.get('window').height;
+
+    if (Utils.isPortrait()) {
+      isFullScreenGlobal = false;
+      this.setState({
+        orientationWidth: width * 0.8,
+        orientationHeight: width * 0.8 * 0.56,
+      });
+      this.props.navigation.setParams({
+        fullscreen: false,
+      });
+    } else {
+      isFullScreenGlobal = true;
+      this.setState({
+        orientationHeight: height * 0.8,
+        orientationWidth: height * 0.8 * 1.77,
+        isFullScreen:true
+      });
+      this.props.navigation.setParams({
+        fullscreen: true,
+      });
+    }
+  }
+
+  onLayout(){
+    console.log('on layout called');
+    this.resizeVideoPlayer();
+  }
+
+  
+
   render() {
     const { navigate } = this.props.navigation;
     
     return (
-      <View style={styles.container}>
-        <View style={styles.videoButton}><Icon name="ios-play-circle" color="#ccc"size={60}/></View>
+      <View style={styles.container} onLayout={this.onLayout}>
+  <View style={styles.videoButton}>
+    {this.state.hasLoaded && !this.state.isBuffering && <Icon name="ios-play-circle" color="#ccc"size={60}/>}
+    {!this.state.hasLoaded && <ActivityIndicator size={50}/>}
+    {this.state.isBuffering && <ActivityIndicator size={50}/>}
+  </View>
         <Video source={{ uri: "http://livestreamcdn.net:1935/TVSURCANAL14/TVSURCANAL14/playlist.m3u8" }}   // Can be a URL or a local file.
           ref={(ref) => {
             this.player = ref
           }}
+          onPlaybackRateChange={this.onPlaybackRateChange}
           onBuffer={this.onBuffer}                // Callback when remote video is buffering
           onEnd={this.onEnd}                      // Callback when playback finishes
           onError={this.videoError}                                       // Store reference             // Callback when video cannot be loaded
@@ -32,13 +103,16 @@ export default class WatchScreen extends React.Component {
             bufferForPlaybackAfterRebufferMs: 5000 //number
           }}
           resizeMode="cover"
+          fullscreen={true}
+          hideShutterView={true}
+          onLoad={() => this.setState({hasLoaded: true})}
 
         />
       </View>
     );
   }
 }
-const width = Math.round(Dimensions.get('window').width);
+
 const styles = StyleSheet.create({
   backgroundVideo: {
     position: 'absolute',
@@ -49,7 +123,8 @@ const styles = StyleSheet.create({
   },
   container: {
     height: width / 1.3333,
-    position: "relative"
+    position: "relative",
+    backgroundColor: "#000000"
   },
   videoButton:{
     display: "flex",

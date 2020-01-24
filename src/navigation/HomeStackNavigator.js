@@ -45,6 +45,7 @@ export default HomeStackNavigator = createStackNavigator({
             backgroundColor: '#FF9800',
         },
         headerTintColor: '#fff',
+        
     },
     Schedule: {
         screen: ScheduleScreen,

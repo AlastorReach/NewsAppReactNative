@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, FlatList, Dimensions, StyleSheet } from 'react-native';
+import { View, Text, SafeAreaView, FlatList, Dimensions, StyleSheet, ActivityIndicator } from 'react-native';
 import Data from '../../data/sample.json';
 import NewsList from '../components/NewsList';
 import axiosservice from '../../services/axiosService';
@@ -39,12 +39,14 @@ async _fetchNewsByCategory(){
     method: 'GET'
   });
 
+  const totalPages = response.headers['x-wp-totalpages'];
   this.setState((prevState, nextProps) => ({
     data: 
     page === 1
     ? Array.from(response.data)
     : [...this.state.data, ...response.data],
-    loading: false
+    loading: false,
+    hasReachedMax: this.state.page + 1 > totalPages
   }));
 }
   catch(e){
@@ -55,10 +57,27 @@ async _fetchNewsByCategory(){
     })
   }
 }
+
+_handleLoadMore = () => {
+  if(!this.state.hasReachedMax){
+    this.setState(
+      (prevState, nextProps) => ({
+        page: prevState.page + 1,
+        loading: true
+      }),
+      () => {
+        this._fetchNewsByCategory();
+      }
+    );
+  }
+};
+
+
+
 render(){
   return(
     <SafeAreaView style={styles.container}>
-      <NewsList news={this.state.data} />
+      <NewsList news={this.state.data} page={this.state.page} _handleLoadMore={this._handleLoadMore} loadingMore={this.state.loading} />
     </SafeAreaView>
   )
 }
