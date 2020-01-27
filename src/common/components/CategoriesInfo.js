@@ -3,12 +3,12 @@ import { View, Text } from 'react-native';
 
 export default CategoriesInfo = (props) => {
     let categories = <View />
-    if(props.categories){
+    if (props.categories) {
         categories = props.categories.map((cat) => (
-        <View><Text>{cat.name}</Text></View>
+            <View><Text>{cat.name}</Text></View>
         ));
     }
-    return(
-        {categories}
+    return (
+        { categories }
     )
 }

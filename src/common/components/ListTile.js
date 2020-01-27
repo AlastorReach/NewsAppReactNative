@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import Icon from "react-native-vector-icons/Ionicons";
 
 export default ListTyle = (props) =>(
     <View>

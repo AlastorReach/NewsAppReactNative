@@ -1,32 +1,31 @@
 import React from 'react';
-
-import { Dimensions, ActivityIndicator, View, ScrollView } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import Center from './Center';
 
-export default class ActivyIndicatorThenComponent extends React.Component{
-    constructor(props){
+export default class ActivyIndicatorThenComponent extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
-            hasLoaded : false
+            hasLoaded: false
         }
     }
 
-    componentDidMount(){
-        setTimeout(() =>{
+    componentDidMount() {
+        setTimeout(() => {
             this.setState({
                 hasLoaded: true
             });
         });
     }
-    render(){
-        let component = <ActivityIndicator size={40}/>
-        if(this.state.hasLoaded){
+    render() {
+        let component = <ActivityIndicator size={40} />
+        if (this.state.hasLoaded) {
             component = this.props.children
         }
-            
-        return(
+
+        return (
             <Center>
-                {component} 
+                {component}
             </Center>
         )
     }

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image } from 'react-native';
 import {createStackNavigator} from 'react-navigation-stack';
 import MaterialTopTabNavigator from './MaterialTopTabNavigator';
-import DynamicTabNavigator from '../common/components/DynamicTabNavigator';
 
 import AppBar from './AppBar';
 
@@ -10,14 +9,10 @@ import ScheduleScreen from '../screens/ScheduleScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import WatchScreen from '../screens/WatchScreen';
 import FlatButton from '../common/components/FlatButton';
-import NewsStackNavigator from './NewsStackNavigator';
 import PostDetailScreen from '../screens/PostDetailScreen';
 
 //Theme
 import { colors } from '../theme';
-
-//Helpers
-import { navigateToScreen } from '../common/helpers/quickFunctions';
 
 export default HomeStackNavigator = createStackNavigator({
     //All the screen from the Screen1 will be indexed here

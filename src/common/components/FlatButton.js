@@ -9,7 +9,8 @@ class FlatButton extends React.Component {
     }
     render(){
         return(
-            <TouchableOpacity onPress={navigateToScreen(this.props.route, this.props.navigation)}>
+            <TouchableOpacity 
+                onPress={navigateToScreen(this.props.route, this.props.navigation)}>
                 <Text style={styles.watchButton}>En Vivo</Text>
             </TouchableOpacity>
         )

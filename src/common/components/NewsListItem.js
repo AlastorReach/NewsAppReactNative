@@ -11,31 +11,34 @@ const width = Dimensions.get('window').width;
 
 const NewsListItem = (props) => {
     moment.locale("es");
-    return(
-    <TouchableOpacity style={styles.item} onPress={navigateToScreen("PostDetailScreen", props.navigation, props.post)}>
-        <View style={styles.categoryContainer}>
-            <Text style={styles.categoryName}>{props.post.topLevelCategories[0]}</Text>
-        </View>
-        <View style={styles.imageAndTitleContainer}>
-            <View style={styles.imageContainer}>
-                <Image 
-                    source={{uri: props.post.mobile}}
-                    style={styles.image}
-                    resizeMode="cover"
-                />
+    return (
+        <TouchableOpacity style={styles.item} 
+            onPress={navigateToScreen("PostDetailScreen", props.navigation, props.post)}>
+            <View style={styles.categoryContainer}>
+                <Text style={styles.categoryName}>{props.post.topLevelCategories[0]}</Text>
             </View>
-            <View style={styles.titleContainer}>
-                <Text
-                ellipsizeMode="tail"
-                numberOfLines={5}
-                style={styles.title}>{props.post.title}</Text>
+            <View style={styles.imageAndTitleContainer}>
+                <View style={styles.imageContainer}>
+                    <Image
+                        source={{ uri: props.post.mobile }}
+                        style={styles.image}
+                        resizeMode="cover"
+                    />
+                </View>
+                <View style={styles.titleContainer}>
+                    <Text
+                        ellipsizeMode="tail"
+                        numberOfLines={5}
+                        style={styles.title}>{props.post.title}</Text>
+                </View>
             </View>
-        </View>
-        <View style={styles.dateAndMoreContainer}>
-            <Text style={styles.date}>{moment(props.post.date_gmt, "YYYYMMDD").fromNow()}</Text>
-            <Icon name="md-more" size={25} />
-        </View>
-    </TouchableOpacity>
+            <View style={styles.dateAndMoreContainer}>
+                <Text style={styles.date}>
+                    {moment(props.post.date_gmt, "YYYYMMDD").fromNow()}
+                </Text>
+                <Icon name="md-more" size={25} />
+            </View>
+        </TouchableOpacity>
     )
 };
 
@@ -45,8 +48,8 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         shadowColor: "#000",
         shadowOffset: {
-	    width: 0,
-        height: 2,
+            width: 0,
+            height: 2,
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
@@ -56,15 +59,15 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5
     },
-    image:{
+    image: {
         width: undefined,
         height: undefined,
         resizeMode: "cover",
         flex: 1
     },
     imageContainer: {
-        width : width / 2 - 20,
-        height: ((width  / 2) -20)  / 1.7777,
+        width: width / 2 - 20,
+        height: ((width / 2) - 20) / 1.7777,
         backgroundColor: "lightgrey",
         marginRight: 10
     },
